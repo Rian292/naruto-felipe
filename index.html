@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto</title>
+</head>
+
+
+<body>
+
+    <h1>
+        Naruto
+    </h1>
+
+    Digite q quantidade de energia que o Naruto tem <input id="ipt_qtdEnergia" type="text"> <br><br>
+    Digite a quantidade de clones desejada <input id="ipt_qtdClone" type="text"> <br><br>
+    Digite a quantidade de clones por linha <input id="ipt_qtdCloneLinha" type="text"> <br><br>
+
+    <button onclick="criar()"> Criar clones </button> <br><br>
+
+    <div id="res">
+
+    </div>
+
+</body>
+<script>
+    function criar() {
+        res.innerHTML = ''
+        var qtdEnergia = Number(ipt_qtdEnergia.value)
+        var qtdClones = Number(ipt_qtdClone.value)
+        var qtdCloneLinha = Number(ipt_qtdCloneLinha.value)
+        var sobraDeEnergia = qtdEnergia - (qtdClones * 20)
+        var percentualSobra = (sobraDeEnergia / qtdEnergia) * 100
+
+        if (qtdEnergia >= 20 && qtdEnergia <= 5000) {
+
+            if (qtdClones >= 0 && qtdClones <= 250) {
+
+                if (qtdCloneLinha > 0) {
+
+                    if (qtdEnergia >= (qtdClones * 20)) {
+                        var index = 1
+                        var indexQtdLinha = 1
+                        while (index <= qtdClones) {
+                            if (qtdCloneLinha == 1) {
+                                res.innerHTML += `<img src="http://2.bp.blogspot.com/-4_toNk5ISLw/TdGw2DRTxfI/AAAAAAAAGuE/1lbY48sITPY/s1600/brushes++naruto++blogspot+++photoscape+para+blog+photoscape+brushesl+png010.png" > <br>`
+                            } else {
+                                res.innerHTML += `<img src="http://2.bp.blogspot.com/-4_toNk5ISLw/TdGw2DRTxfI/AAAAAAAAGuE/1lbY48sITPY/s1600/brushes++naruto++blogspot+++photoscape+para+blog+photoscape+brushesl+png010.png" >`
+                                if (index % qtdCloneLinha == 0) {
+                                    res.innerHTML += `<br>`
+                                }
+                            }
+
+                            index++
+                        }
+                        
+
+
+                        res.innerHTML += `Análise da geração de clones<br>
+                        Energia Inicial: ${qtdEnergia} <br>
+                        Qtde de Clones: ${qtdClones}<br>
+                        Sobra de Energia: ${sobraDeEnergia} <br><br>`
+
+
+                        if ((sobraDeEnergia > 1000) || ((qtdClones >= 20 && qtdClones <= 50) && percentualSobra > 20)) {
+                            res.innerHTML += `PROVAVELMENTE VOCE VAI GANHAR`
+                        } else if ((sobraDeEnergia > 500) || ((qtdClones >= 20 && qtdClones <= 50) && percentualSobra > 10)) {
+                            res.innerHTML += `A LUTA VAI SER MUITO BOA`
+                        } else {
+                            res.innerHTML += `TORÇA PARA O ADVERSÁRIO SER FRAQUINHO`
+                        }
+
+
+
+                    } else {
+                        alert('A quantidade de energia é insuficiente para a criação da quantidade de clones indicada')
+                        ipt_qtdEnergia.value = ''
+                        ipt_qtdClone.value = ''
+                        ipt_qtdCloneLinha.value = ''
+                    }
+
+                } else {
+                    alert('ERRO NA ENTRADA DE DADOS – Energia tem que ser entre 20 e 5.000.Quantidade de Clones tem que ser entre 0 e 250. Quantidade de Clones por linha tem que ser maior que 0')
+                    ipt_qtdEnergia.value = ''
+                    ipt_qtdClone.value = ''
+                    ipt_qtdCloneLinha.value = ''
+                }
+
+
+            } else {
+                alert('ERRO NA ENTRADA DE DADOS – Energia tem que ser entre 20 e 5.000.Quantidade de Clones tem que ser entre 0 e 250. Quantidade de Clones por linha tem que ser maior que 0')
+                ipt_qtdEnergia.value = ''
+                ipt_qtdClone.value = ''
+                ipt_qtdCloneLinha.value = ''
+            }
+        } else {
+            alert('ERRO NA ENTRADA DE DADOS – Energia tem que ser entre 20 e 5.000.Quantidade de Clones tem que ser entre 0 e 250. Quantidade de Clones por linha tem que ser maior que 0')
+            ipt_qtdEnergia.value = ''
+            ipt_qtdClone.value = ''
+            ipt_qtdCloneLinha.value = ''
+        }
+
+
+    }
+</script>
+
+</html>
